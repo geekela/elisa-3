@@ -1,0 +1,160 @@
+# HD Ring Attractor Network Requirements
+# Optimized for NVIDIA B200 GPU with CUDA 12.4+
+# Last updated: December 2024
+
+# ==============================================================================
+# IMPORTANT: PyTorch Installation
+# ==============================================================================
+# For NVIDIA B200 GPU with CUDA 12.8 or newer, a nightly/preview build of PyTorch is recommended.
+# Uninstall any existing PyTorch versions first:
+# pip uninstall -y torch torchvision torchaudio
+# Then, install the nightly build for CUDA 12.8 (check pytorch.org for the latest nightly command):
+# pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+#
+# Original instruction for CUDA 12.4 (may not support B200 fully):
+# # pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+#
+# Note: B200 GPU (sm_100) has limited support. Code will fallback to CPU if needed.
+# ==============================================================================
+
+# Core Scientific Computing
+numpy>=1.24.1,<2.0.0
+scipy>=1.15.0,<2.0.0
+pandas>=2.3.0,<3.0.0
+scikit-learn>=1.7.0,<2.0.0
+
+# Visualization
+matplotlib>=3.10.0,<4.0.0
+seaborn>=0.13.2,<1.0.0
+plotly>=5.17.0,<6.0.0
+
+# Progress Bars and Utilities
+tqdm>=4.67.0,<5.0.0
+rich>=13.0.0,<14.0.0
+
+# Jupyter Ecosystem
+jupyter>=1.1.0,<2.0.0
+jupyterlab>=4.0.8,<5.0.0
+notebook>=6.5.5,<7.0.0
+ipywidgets>=8.1.0,<9.0.0
+jupyter-contrib-nbextensions>=0.7.0,<1.0.0
+nbformat>=5.9.0,<6.0.0
+nbconvert>=7.11.0,<8.0.0
+ipykernel>=6.0.0,<7.0.0
+ipython>=8.0.0,<9.0.0
+
+# Code Quality and Development
+black>=23.0.0,<24.0.0
+flake8>=6.0.0,<7.0.0
+pylint>=3.0.0,<4.0.0
+mypy>=1.0.0,<2.0.0
+isort>=5.12.0,<6.0.0
+autopep8>=2.0.0,<3.0.0
+
+# Testing
+pytest>=7.4.0,<8.0.0
+pytest-cov>=4.1.0,<5.0.0
+pytest-xdist>=3.3.0,<4.0.0
+hypothesis>=6.88.0,<7.0.0
+
+# Documentation
+sphinx>=7.2.0,<8.0.0
+sphinx-rtd-theme>=1.3.0,<2.0.0
+sphinx-autodoc-typehints>=1.24.0,<2.0.0
+
+# ML/DL Utilities
+tensorboard>=2.15.0,<3.0.0
+wandb>=0.16.0,<1.0.0
+torchinfo>=1.8.0,<2.0.0
+torchmetrics>=1.2.0,<2.0.0
+
+# Data Processing
+h5py>=3.10.0,<4.0.0
+netCDF4>=1.6.0,<2.0.0
+zarr>=2.16.0,<3.0.0
+xarray>=2023.10.0
+
+# Performance and Optimization
+numba>=0.58.0,<1.0.0
+joblib>=1.3.0,<2.0.0
+dask>=2023.10.0
+ray>=2.8.0,<3.0.0
+
+# Configuration Management
+hydra-core>=1.3.0,<2.0.0
+omegaconf>=2.3.0,<3.0.0
+python-dotenv>=1.0.0,<2.0.0
+pyyaml>=6.0.0,<7.0.0
+
+# System and Environment
+psutil>=5.9.0,<6.0.0
+gpustat>=1.1.0,<2.0.0
+py-cpuinfo>=9.0.0,<10.0.0
+
+# Image Processing (for potential visualizations)
+Pillow>=10.1.0,<11.0.0
+opencv-python>=4.8.0,<5.0.0
+imageio>=2.33.0,<3.0.0
+
+# Additional Scientific Libraries
+sympy>=1.12.0,<2.0.0
+statsmodels>=0.14.0,<1.0.0
+networkx>=3.2.0,<4.0.0
+
+# Parallel Processing
+mpi4py>=3.1.0,<4.0.0
+multiprocess>=0.70.0,<1.0.0
+
+# Time Series Analysis (for trajectory analysis)
+tslearn>=0.6.0,<1.0.0
+stumpy>=1.12.0,<2.0.0
+
+# Data Parsing and Formatting
+contourpy>=1.0.1
+cycler>=0.10
+fonttools>=4.22.0
+kiwisolver>=1.3.1
+pyparsing>=2.3.1
+python-dateutil>=2.7
+
+# Essential System Packages
+packaging>=20.0
+pytz>=2020.1
+tzdata>=2022.0
+typing-extensions>=4.0.0
+pathlib2>=2.3.0
+threadpoolctl>=3.1.0
+
+# Optional: Advanced Visualization
+holoviews>=1.18.0,<2.0.0
+bokeh>=3.3.0,<4.0.0
+altair>=5.1.0,<6.0.0
+
+# B200 GPU Monitoring (optional)
+nvidia-ml-py>=12.535.0,<13.0.0
+pynvml>=11.5.0,<12.0.0
+
+# ==============================================================================
+# Installation Notes:
+# ==============================================================================
+# 1. Create virtual environment:
+#    python -m venv elisa3_env
+#    source elisa3_env/bin/activate  # Linux/Mac
+#    
+# 2. Upgrade pip:
+#    pip install --upgrade pip wheel setuptools
+#
+# 3. Install PyTorch for B200/CUDA 12.8 (Nightly Build Recommended):
+#    pip uninstall -y torch torchvision torchaudio  # Ensure clean install
+#    pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+#    # (Alternatively, for specific stable versions if B200 support is confirmed for them with CUDA 12.8):
+#    # pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+#
+# 4. Install other requirements:
+#    pip install -r requirements.txt
+#
+# 5. Verify installation:
+#    python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.cuda.is_available()}, CUDA Built With: {torch.version.cuda}')"
+#
+# 6. For B200 GPU issues, the code will automatically fallback to CPU
+# ==============================================================================
